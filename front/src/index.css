@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sora: "Sora", sans-serif;
+  --font-geist: "Geist", sans-serif;
+  --font-ibm: "IBM Plex Mono", monospace;
+  --font-pixelify: "Pixelify Sans", sans-serif;
+
+  --color-dark: #171717;
+  --color-light: #f1f1f1;
+  --color-halflight: #e3e3e3;
+  --color-acid: #cbf478;
+}
