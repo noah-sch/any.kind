@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import WordHoverEffect from "./ui/WordHoverEffect";
 
 export default function Menu() {
 
     const [language, setLanguage] = useState<"EN" | "FR">("EN");
+
+    const navigate = useNavigate();
 
     return(
         <>
@@ -16,7 +19,9 @@ export default function Menu() {
                     <div className="font-ibm flex flex-col items-start justify-start gap-1.5">
                         {["home", "works", "blog", "contact", "404"].map((page) => (
                             <>
-                                <div className="text-sm font-semibold">
+                                <div className="text-sm font-semibold"
+                                    onClick={() => navigate('/'+(page === 'home' ? '' : page))}
+                                >
                                     <WordHoverEffect word={page.toUpperCase()} />
                                 </div>
                             </>
