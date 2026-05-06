@@ -1,1 +1,1 @@
-export type theme = 'dark' | 'light' | 'halflight' | 'acid' | 'cream';
+export type theme = 'dark' | 'light' | 'halflight' | 'acid' | 'cream' | 'orng';

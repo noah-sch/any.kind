@@ -43,10 +43,23 @@ export function ScrollChildReveal( {children, className='', ...props}: ScrollRev
     )
 }
 
-export function ScrollRevealContent( {children, ...props}: React.HTMLAttributes<HTMLDivElement>) {
+export function ScrollRevealContent( {children, className=''}: React.HTMLAttributes<HTMLDivElement>) {
     const {isRevealed} = useContext(ScrollRevealContext);
 
     if (!isRevealed) return null;
+    return(
+        <>
+            <div className={className}>
+                {children}
+            </div>
+        </>
+    )
+}
+
+export function ScrollHideContent( {children, ...props}: React.HTMLAttributes<HTMLDivElement>) {
+    const {isRevealed} = useContext(ScrollRevealContext);
+
+    if (isRevealed) return null;
     return(
         <>
             <div {...props}>

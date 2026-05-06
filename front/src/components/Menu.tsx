@@ -11,34 +11,34 @@ export default function Menu() {
 
     return(
         <>
-            <div className="fixed top-20 left-1/2 w-[21.5vw] flex flex-col items-start justyfy-start bg-black text-neutral-100 z-50 p-8">
+            <div className="fixed top-20 left-1/2 w-[21.5vw] flex flex-col items-start justyfy-start bg-dark text-light z-50 p-8">
                 <div className="flex w-full flex-col items-start justify-start gap-8">
                     <div className="font-pixelify text-xl font-semibold cursor-pointer">
                         any.kind
                     </div>
                     <div className="font-ibm flex flex-col items-start justify-start gap-1.5">
-                        {["home", "works", "blog", "contact", "404"].map((page) => (
+                        {["Home", "Works", "Blog", "Contact", "404"].map((page) => (
                             <>
-                                <div className="text-sm font-semibold"
-                                    onClick={() => navigate('/'+(page === 'home' ? '' : page))}
+                                <div className="text-md font-semibold"
+                                    onClick={() => navigate((page.toLowerCase() === 'home' ? '' : page.toLowerCase()))}
                                 >
-                                    <WordHoverEffect word={page.toUpperCase()} />
+                                    <WordHoverEffect word={page} />
                                 </div>
                             </>
                         ))}
                     </div>
                     <div className="w-full flex flex-col items-end justify-start gap-1.5">
-                        <div className="font-sora text-lg font-bold cursor-pointer hover:bg-neutral-100 hover:text-black">
-                            HELLO@ANY.KIND.COM
+                        <div className="font-geist text-lg font-bold cursor-pointer hover:bg-light hover:text-dark">
+                            hello@any.kind.com
                         </div>
                     </div>
-                    <div className="font-ibm flex flex-row items-center justify-start gap-2 text-sm font-semibold">
-                        <div className={`border-b ${language === "EN" ? "border-b-neutral-100" : "border-b-black"}`}
+                    <div className="font-geist flex flex-row items-center justify-start gap-2 text-sm font-semibold">
+                        <div className={`border-b ${language === "EN" ? "border-b-light" : "border-b-dark"}`}
                             onClick={() => setLanguage("EN")}
                         >
                             <WordHoverEffect word={"EN"}/>
                         </div>
-                        <div className={`border-b ${language === "FR" ? "border-b-neutral-100" : "border-b-black"}`}
+                        <div className={`border-b ${language === "FR" ? "border-b-light" : "border-b-dark"}`}
                             onClick={() => setLanguage("FR")}
                         >
                             <WordHoverEffect word={"FR"}/>

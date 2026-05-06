@@ -28,8 +28,8 @@ function App() {
       <div className='min-h-screen w-full overflow-auto'>
           <Navbar/>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/works" element={<Works />} />
+            <Route path="" element={<Home />} />
+            <Route path="works" element={<Works />} />
             <Route path="*" element={<NotFound404 />} />
           </Routes>
           <Footer/>

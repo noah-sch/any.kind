@@ -15,13 +15,37 @@ export default function WS01() {
             <Section theme={"halflight"}>
 
                 <ScrollChildReveal className="w-full min-h-[101vh] flex flex-col items-start justify-start">
+                    <div className="font-pixelify text-xl w-full h-screen flex flex-row items-start justify-center">
+                        Scroll up to reveal projects
+                    </div>
 
-                    <ScrollRevealContent className={'w-full'}>
-                        <ItemPannel3D items={['leakw.id', 'Fainted', 'YESx3', `FORWARD`, 'EMPTY SPACE']}
-                            className={'text-end flex-col items-end justify-start px-4 py-48 overflow-hidden'} 
-                            itemClassName={'text-9xl font-black hover:text-halflight hover:[-webkit-text-stroke:2px_black]'}
-                        />
+                    <ScrollRevealContent className={'w-full flex flex-col items-end '}>
+                        <ItemPannel3D items={['leakw.id', 'FAINTED', 'YESx3', `FAST FORWARD`, 'EMPTY SPACE', 'PUSH PULL SKIP', 'OZM MAX TRAINED']}
+                            zMaxRotationAngle={60}
+                            className={'max-w-3/4 text-end flex-col items-end justify-start px-4 py-48 overflow-hidden'} 
+                            itemClassName={'font-archivo break-words hyphens-auto text-[10rem] leading-[0.8] p-2 group'}
+                            lang={'fr'}
+                        >
+                            {(item, i) => (
+                                <div key={i} 
+                                    className="h-auto inline"
+                                >
+                                    <span className="text-xl align-top text-orng">
+                                        [{i + 1}]
+                                    </span>
+                                    <span className="font-sans align-top text-[8rem] font-thin">
+                                        /
+                                    </span>
+                                    <span className="group-hover:text-halflight group-hover:[-webkit-text-stroke:2px_black]">
+                                        {item}
+                                    </span>
+                                </div>
+                            )}
+                        </ItemPannel3D>
                     </ScrollRevealContent>
+                    <div className="w-full h-screen">
+
+                    </div>
                 </ScrollChildReveal>  
             </Section>
 

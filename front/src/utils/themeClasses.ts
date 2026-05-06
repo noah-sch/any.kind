@@ -13,6 +13,7 @@ const bgMap: Record<string, string> = {
     halflight: 'bg-halflight',
     acid: 'bg-acid',
     cream: 'bg-cream',
+    orng: 'bg-orng',
 };
 
 const textMap: Record<string, string> = {
@@ -21,6 +22,7 @@ const textMap: Record<string, string> = {
     halflight: 'text-dark selection:bg-dark selection:text-halflight',
     acid: 'text-dark selection:bg-dark selection:text-acid',
     cream: 'text-dark selection:bg-dark selection:text-cream',
+    orng: 'text-dark selection:bg-dark selection:text-orng'
 };
 
 const borderMap: Record<string, string> = {
@@ -29,6 +31,7 @@ const borderMap: Record<string, string> = {
     halflight: 'border-dark',
     acid: 'border-dark',
     cream: 'border-dark',
+    orng: 'border-dark'
 };
 
 export const themeClasses = ( {theme, bg=false, text=false, border=false}: themeClassesProps ): string => {
