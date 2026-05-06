@@ -2,49 +2,74 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import WordHoverEffect from "./ui/WordHoverEffect";
+import PixelTicket from "./ui/PixelTicket";
 
-export default function Menu() {
+type MenuProps = {
+    setShowMenu: (showMenu: boolean) => void;
+}
+
+export default function Menu( {setShowMenu}: MenuProps ) {
 
     const [language, setLanguage] = useState<"EN" | "FR">("EN");
 
     const navigate = useNavigate();
 
+    const handleClick = (page: string): void => {
+        navigate((page.toLowerCase() === 'home' ? '' : page.toLowerCase()));
+        setShowMenu(false);
+    }
+
     return(
         <>
-            <div className="fixed top-20 left-1/2 w-[21.5vw] flex flex-col items-start justyfy-start bg-dark text-light z-50 p-8">
-                <div className="flex w-full flex-col items-start justify-start gap-8">
-                    <div className="font-pixelify text-xl font-semibold cursor-pointer">
-                        any.kind
-                    </div>
-                    <div className="font-ibm flex flex-col items-start justify-start gap-1.5">
-                        {["Home", "Works", "Blog", "Contact", "404"].map((page) => (
-                            <>
-                                <div className="text-md font-semibold"
-                                    onClick={() => navigate((page.toLowerCase() === 'home' ? '' : page.toLowerCase()))}
-                                >
-                                    <WordHoverEffect word={page} />
-                                </div>
-                            </>
-                        ))}
-                    </div>
-                    <div className="w-full flex flex-col items-end justify-start gap-1.5">
-                        <div className="font-geist text-lg font-bold cursor-pointer hover:bg-light hover:text-dark">
-                            hello@any.kind.com
-                        </div>
-                    </div>
-                    <div className="font-geist flex flex-row items-center justify-start gap-2 text-sm font-semibold">
-                        <div className={`border-b ${language === "EN" ? "border-b-light" : "border-b-dark"}`}
-                            onClick={() => setLanguage("EN")}
+            <div className="fixed top-20 left-1/2 w-[21.5vw] z-50">
+                <PixelTicket pixelH={'h-4'}
+                    pixelW={'w-4'}
+                    nbPixels={2}
+                    missingPixels={[
+                        [],
+                        [],
+                        [],
+                        [0, 2, 3]
+                    ]}
+                    pxCol={'bg-dark'}
+                    className={'flex flex-col items-start justyfy-start bg-dark text-light z-50 p-4'}
+                >
+                    <div className="flex w-full flex-col items-start justify-start gap-8">
+                        <div className="font-pixelify text-xl font-semibold cursor-pointer"
+                            onClick={() => handleClick('home')}
                         >
-                            <WordHoverEffect word={"EN"}/>
+                            any.kind
                         </div>
-                        <div className={`border-b ${language === "FR" ? "border-b-light" : "border-b-dark"}`}
-                            onClick={() => setLanguage("FR")}
-                        >
-                            <WordHoverEffect word={"FR"}/>
+                        <div className="font-ibm flex flex-col items-start justify-start gap-1.5">
+                            {["Home", "Works", "Blog", "Contact", "404"].map((page) => (
+                                <>
+                                    <div className="text-md font-semibold"
+                                        onClick={() => handleClick(page)}
+                                    >
+                                        <WordHoverEffect word={page} />
+                                    </div>
+                                </>
+                            ))}
+                        </div>
+                        <div className="w-full flex flex-col items-end justify-start gap-1.5">
+                            <div className="font-geist text-lg font-bold cursor-pointer hover:bg-light hover:text-dark">
+                                hello@any.kind.com
+                            </div>
+                        </div>
+                        <div className="font-geist flex flex-row items-center justify-start gap-2 text-sm font-semibold">
+                            <div className={`border-b ${language === "EN" ? "border-b-light" : "border-b-dark"}`}
+                                onClick={() => setLanguage("EN")}
+                            >
+                                <WordHoverEffect word={"EN"}/>
+                            </div>
+                            <div className={`border-b ${language === "FR" ? "border-b-light" : "border-b-dark"}`}
+                                onClick={() => setLanguage("FR")}
+                            >
+                                <WordHoverEffect word={"FR"}/>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </PixelTicket>
             </div>
         </>
     )

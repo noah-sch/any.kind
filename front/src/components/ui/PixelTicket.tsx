@@ -18,128 +18,102 @@ export default function PixelTicket( {pixelH, pixelW, nbPixels,missingPixels, px
         )
     );
 
-    const pxClass: string = pixelH + ' ' + pixelW;
-    const pxRowClass: string = pixelH + ' w-full ' + pxCol + ' ';
-    const pxColClass: string = pixelW + ' h-full ' + pxCol + ' ';
+    const pxClass = `${pixelH} ${pixelW}`;
+    const pxRowClass = `${pixelH} w-full ${pxCol}`;
+    const pxColClass = `${pixelW} h-full ${pxCol}`;
 
-    return(
-        <>
-            <div className={`h-full flex flex-col items-start justify-start`}>
+    return (
+        <div className="inline-grid grid-cols-[auto_1fr_auto] grid-rows-[auto_1fr_auto]">
 
-                {/* TOP SIDE */}
-                <div className="w-full flex flex-row items-start justify-start">
-
-                    {/* CORNER TL */}
-                    <div className="flex flex-col items-start justify-start">
-                        {grid[0].map((row, index) => (
-                            <div key={index}
-                                className="flex flex-row items-start justify-start"
-                            >
-                                {row.map((pixel, index) => (
-                                    <div key={index}
-                                        className={`${pxClass} ${pixel ? pxCol : 'bg-transparent'}`}
-                                    />
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* TOP ROW */}
-                    <div className="w-full flex flex-col items-start justify-start">
-                        {grid[0].map((row, index) => (
-                            <div key={index}
-                                className={pxRowClass}
+            {/* TOP LEFT */}
+            <div className="flex flex-col">
+                {grid[0].map((row, i) => (
+                    <div key={i} className="flex">
+                        {row.map((pixel, j) => (
+                            <div
+                                key={j}
+                                className={`${pxClass} ${pixel ? pxCol : "bg-transparent"}`}
                             />
                         ))}
                     </div>
-
-                    {/* CORNER TR */}
-                    <div className="flex flex-col items-start justify-start">
-                        {grid[1].map((row, index) => (
-                            <div key={index}
-                                className="flex flex-row items-start justify-start"
-                            >
-                                {row.map((pixel, index) => (
-                                    <div key={index}
-                                        className={`${pxClass} ${pixel ? pxCol : 'bg-transparent'}`}
-                                    />
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* MID SIDE */}
-                <div className="h-full w-full flex flex-row items-start justify-start">
-
-                    {/* LEFT COL */}
-                    <div className="h-full flex flex-row items-start justify-start">
-                        {grid[3].map((col, index) => (
-                            <div key={index}
-                                className={pxColClass}
-                            />
-                        ))}
-                    </div>
-
-                    {/* content */}
-                    <div className={`h-full w-full ${className}`}>
-                        {children}
-                    </div>
-
-                    {/* RIGHT COL */}
-                    <div className="h-full flex flex-row items-start justify-start">
-                        {grid[1].map((col, index) => (
-                            <div key={index}
-                                className={pxColClass}
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                {/* BOT SIDE */}
-                <div className="w-full flex flex-row items-start justify-start">
-
-                    {/* CORNER BL */}
-                    <div className="flex flex-col items-start justify-start">
-                        {grid[3].map((row, index) => (
-                            <div key={index}
-                                className="flex flex-row items-start justify-start"
-                            >
-                                {row.map((pixel, index) => (
-                                    <div key={index}
-                                        className={`${pxClass} ${pixel ? pxCol : 'bg-transparent'}`}
-                                    />
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* BOT ROW */}
-                    <div className="w-full flex flex-col items-start justify-start">
-                        {grid[2].map((row, index) => (
-                            <div key={index}
-                                className={pxRowClass}
-                            />
-                        ))}
-                    </div>
-
-                    {/* CORNER BR */}
-                    <div className="flex flex-col items-start justify-start">
-                        {grid[2].map((row, index) => (
-                            <div key={index}
-                                className="flex flex-row items-start justify-start"
-                            >
-                                {row.map((pixel, index) => (
-                                    <div key={index}
-                                        className={`${pxClass} ${pixel ? pxCol : 'bg-transparent'}`}
-                                    />
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
+                ))}
             </div>
-        </>
-    )
+
+            {/* TOP */}
+            <div className="flex flex-col">
+                {grid[0].map((_, i) => (
+                    <div key={i} className={pxRowClass} />
+                ))}
+            </div>
+
+            {/* TOP RIGHT */}
+            <div className="flex flex-col">
+                {grid[1].map((row, i) => (
+                    <div key={i} className="flex">
+                        {row.map((pixel, j) => (
+                            <div
+                                key={j}
+                                className={`${pxClass} ${pixel ? pxCol : "bg-transparent"}`}
+                            />
+                        ))}
+                    </div>
+                ))}
+            </div>
+
+            {/* LEFT */}
+            <div className="flex">
+                {grid[3].map((_, i) => (
+                    <div key={i} className={pxColClass} />
+                ))}
+            </div>
+
+            {/* CONTENT */}
+            <div className={className}>
+                {children}
+            </div>
+
+            {/* RIGHT */}
+            <div className="flex">
+                {grid[1].map((_, i) => (
+                    <div key={i} className={pxColClass} />
+                ))}
+            </div>
+
+            {/* BOTTOM LEFT */}
+            <div className="flex flex-col">
+                {grid[3].map((row, i) => (
+                    <div key={i} className="flex">
+                        {row.map((pixel, j) => (
+                            <div
+                                key={j}
+                                className={`${pxClass} ${pixel ? pxCol : "bg-transparent"}`}
+                            />
+                        ))}
+                    </div>
+                ))}
+            </div>
+
+            {/* BOTTOM */}
+            <div className="flex flex-col">
+                {grid[2].map((_, i) => (
+                    <div key={i} className={pxRowClass} />
+                ))}
+            </div>
+
+            {/* BOTTOM RIGHT */}
+            <div className="flex flex-col">
+                {grid[2].map((row, i) => (
+                    <div key={i} className="flex">
+                        {row.map((pixel, j) => (
+                            <div
+                                key={j}
+                                className={`${pxClass} ${pixel ? pxCol : "bg-transparent"}`}
+                            />
+                        ))}
+                    </div>
+                ))}
+            </div>
+
+        </div>
+    );
 }
