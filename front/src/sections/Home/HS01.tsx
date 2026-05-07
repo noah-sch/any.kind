@@ -6,7 +6,7 @@ export default function HS01() {
     return(
         <>
             <Section theme={'halflight'}>
-                <div className="w-full grid grid-cols-4 py-48 px-12">
+                <div className="w-full grid grid-cols-4 pt-48 px-12">
 
                     <div className="col-span-2 col-start-1 flex items-center justify-center">
                         <div className="inline font-pixelify text-5xl">

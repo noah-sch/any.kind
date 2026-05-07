@@ -36,7 +36,7 @@ export default function WS01() {
                                     <span className="font-sans align-top text-[8rem] font-thin">
                                         /
                                     </span>
-                                    <span className="group-hover:text-halflight group-hover:[-webkit-text-stroke:2px_black]">
+                                    <span className="group-hover:text-halflight group-hover:[-webkit-text-stroke:2px_#E07A5F]">
                                         {item}
                                     </span>
                                 </div>

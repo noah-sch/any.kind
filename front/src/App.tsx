@@ -1,6 +1,6 @@
 import Lenis from '@studio-freight/lenis';
 import { useEffect } from 'react';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 
 import Navbar from './components/layout/Navbar';
 import Home from './pages/Home';

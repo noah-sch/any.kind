@@ -66,7 +66,7 @@ export default function ItemPannel3D({ items, children, zMaxRotationAngle, class
                         className={`pointer-events-auto hover:z-30 ${itemClassName}`}
                         style={{
                             transformOrigin: "right center",
-                            transform: `rotateZ(${-(rotations[i] ?? 0)}deg) rotateY(${hoveredIndex === i ? -3 : -25}deg)`,
+                            transform: `rotateZ(${-(rotations[i] ?? 0)}deg) rotateY(${hoveredIndex === i ? -10 : -25}deg)`,
                             transition: "transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)",
                         }}
                         lang={lang}

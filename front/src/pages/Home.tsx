@@ -1,5 +1,7 @@
 import { HeroSection } from "../sections/Home/HeroSection";
 import HS01 from "../sections/Home/HS01";
+import HS03 from "../sections/Home/HS03";
+import HS04 from "../sections/Home/HS04";
 
 export default function Home() {
     return(
@@ -8,6 +10,8 @@ export default function Home() {
                <HeroSection/>
                <HS01/>
 
+               <HS03/>
+               <HS04/>
             </div>
         </>
     )

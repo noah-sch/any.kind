@@ -28,14 +28,14 @@ export default function Menu( {setShowMenu}: MenuProps ) {
                     missingPixels={[
                         [],
                         [],
-                        [],
-                        [0, 2, 3]
+                        [1, 2, 3],
+                        []
                     ]}
                     pxCol={'bg-dark'}
                     className={'flex flex-col items-start justyfy-start bg-dark text-light z-50 p-4'}
                 >
                     <div className="flex w-full flex-col items-start justify-start gap-8">
-                        <div className="font-pixelify text-xl font-semibold cursor-pointer"
+                        <div className="font-pixelify text-xl font-semibold cursor-pointer hover:text-orng"
                             onClick={() => handleClick('home')}
                         >
                             any.kind
@@ -43,7 +43,7 @@ export default function Menu( {setShowMenu}: MenuProps ) {
                         <div className="font-ibm flex flex-col items-start justify-start gap-1.5">
                             {["Home", "Works", "Blog", "Contact", "404"].map((page) => (
                                 <>
-                                    <div className="text-md font-semibold"
+                                    <div className="text-md font-semibold hover:text-orng"
                                         onClick={() => handleClick(page)}
                                     >
                                         <WordHoverEffect word={page} />
@@ -57,12 +57,12 @@ export default function Menu( {setShowMenu}: MenuProps ) {
                             </div>
                         </div>
                         <div className="font-geist flex flex-row items-center justify-start gap-2 text-sm font-semibold">
-                            <div className={`border-b ${language === "EN" ? "border-b-light" : "border-b-dark"}`}
+                            <div className={`border-b ${language === "EN" ? "border-b-light" : "border-b-dark"} hover:text-orng`}
                                 onClick={() => setLanguage("EN")}
                             >
                                 <WordHoverEffect word={"EN"}/>
                             </div>
-                            <div className={`border-b ${language === "FR" ? "border-b-light" : "border-b-dark"}`}
+                            <div className={`border-b ${language === "FR" ? "border-b-light" : "border-b-dark"} hover:text-orng`}
                                 onClick={() => setLanguage("FR")}
                             >
                                 <WordHoverEffect word={"FR"}/>
