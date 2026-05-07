@@ -30,7 +30,7 @@ export default function HS01() {
                                 [0, 4, 6]
                             ]}
                             pxCol={'bg-dark'}
-                            className={'bg-dark text-light'}
+                            childrenClassName={'bg-dark text-light'}
                         >
                             <ScrollRevealEffect text={'Created as a central hub for my work, this website allows me to organize my projects, follow their progress over time, and stay focused on turning ideas into finished results. '}
                                 className={'font-geist text-6xl font-medium'}

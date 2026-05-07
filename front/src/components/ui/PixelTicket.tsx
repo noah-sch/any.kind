@@ -8,9 +8,11 @@ type PixelTicketProps = {
     pxCol: string;
     children: React.ReactNode;
     className?: string;
+    childrenClassName?: string;
+    handleClick?: (arg?: undefined) => void;
 }
 
-export default function PixelTicket( {pixelH, pixelW, nbPixels,missingPixels, pxCol, children, className=''}: PixelTicketProps ) {
+export default function PixelTicket( {pixelH, pixelW, nbPixels,missingPixels, pxCol, children, className='', childrenClassName='', handleClick=()=>{}}: PixelTicketProps ) {
     
     const grid = missingPixels.map((missingListCorner) =>
         Array.from({ length: nbPixels }, (_, y) =>
@@ -23,7 +25,9 @@ export default function PixelTicket( {pixelH, pixelW, nbPixels,missingPixels, px
     const pxColClass = `${pixelW} h-full ${pxCol}`;
 
     return (
-        <div className="inline-grid grid-cols-[auto_1fr_auto] grid-rows-[auto_1fr_auto]">
+        <div className={`inline-grid grid-cols-[auto_1fr_auto] grid-rows-[auto_1fr_auto] ${className}`}
+            onClick={() => handleClick()}
+        >
 
             {/* TOP LEFT */}
             <div className="flex flex-col">
@@ -68,7 +72,7 @@ export default function PixelTicket( {pixelH, pixelW, nbPixels,missingPixels, px
             </div>
 
             {/* CONTENT */}
-            <div className={className}>
+            <div className={childrenClassName}>
                 {children}
             </div>
 

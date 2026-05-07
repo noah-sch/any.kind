@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import PixelTicket from "./PixelTicket";
 import MediaFrame from "./MediaFrame";
@@ -7,12 +8,15 @@ type ESTProps = {
     title: string;
     imgUrl: string;
     description: string;
+    nav: string;
     children?: React.ReactNode;
     className?: string;
     ticketClassName?: string;
 }
 
-export default function ExploreSectionTicket( {title, imgUrl, description, children, className='', ticketClassName=''}: ESTProps ) {
+export default function ExploreSectionTicket( {title, imgUrl, description, nav, children, className='', ticketClassName=''}: ESTProps ) {
+
+    const navigate = useNavigate();
     
     return(
         <>
@@ -22,8 +26,9 @@ export default function ExploreSectionTicket( {title, imgUrl, description, child
                     pixelW={'w-[3px]'}
                     borderCol={'bg-dark'}
                     bgCol={'bg-orng'}
+                    className={'duration-300 group-hover:translate-y-8 z-30'}
                 />
-
+                
                 <PixelTicket pixelH={'h-4'}
                     pixelW={'w-4'}
                     nbPixels={1}
@@ -33,8 +38,10 @@ export default function ExploreSectionTicket( {title, imgUrl, description, child
                         [],
                         [0]
                     ]}
-                    pxCol={'bg-white'}
-                    className={`bg-white ${ticketClassName}`}
+                    pxCol={'bg-white group-hover:bg-orng/50'}
+                    className={'duration-300 cursor-pointer group-hover:scale-110'}
+                    childrenClassName={`bg-white ${ticketClassName}`}
+                    handleClick={() => navigate(nav)}
                 >
                     <div className="flex flex-col items-center justify-start gap-8">
                         {children}
@@ -70,15 +77,16 @@ type PAProps = {
     pixelW: string;
     borderCol: string;
     bgCol: string;
+    className?: string;
 }
 
-function PixelatedArrow ( {height, pixelH, pixelW, borderCol, bgCol}: PAProps ) {
+function PixelatedArrow ( {height, pixelH, pixelW, borderCol, bgCol, className=''}: PAProps ) {
 
     const rowLength: number = height * 2 + 1;
     
     return(
         <>
-            <div className={`flex flex-col items-center justify-center animate-bounce `}> {/* animation à changer plus tard probablement */}
+            <div className={`flex flex-col items-center justify-center animate-bounce ${className}`}> {/* animation à changer plus tard probablement */}
                 {/* TOP */}
                 <div className="w-full flex flex-row items-center justify-center">
                     {Array.from({length: rowLength * 2 }).map((unknown, index) => (

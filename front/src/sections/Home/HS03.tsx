@@ -13,7 +13,7 @@ export default function HS03() {
                         Explore
                     </h1>
 
-                    <div className="w-full grid grid-cols-3 px-24">
+                    <div className="w-full flex flex-row items-start justify-center gap-24">
                         {[
                             {
                                 categCount: 2,
@@ -21,6 +21,7 @@ export default function HS03() {
                                 title: 'Works',
                                 imgUrl: 'webIcon.png',
                                 description: `All what I've built`,
+                                nav: 'works',
                                 p: 'pb-24'
                             },
                             {
@@ -29,6 +30,7 @@ export default function HS03() {
                                 title: 'Blog',
                                 imgUrl: 'webIcon.png',
                                 description: `Things I wanted to write`,
+                                nav: 'blog',
                                 p: 'pt-24'
                             },
                             {
@@ -37,13 +39,15 @@ export default function HS03() {
                                 title: 'Upcomming projects',
                                 imgUrl: 'webIcon.png',
                                 description: `Things I'm currently working on`,
+                                nav: 'works',
                                 p: 'pb-24'
                             }
                         ].map((ticket, index) => (
                             <ExploreSectionTicket title={ticket.title}
                                 imgUrl={ticket.imgUrl}
                                 description={ticket.description}
-                                className={`col-span-1 gap-6 ${ticket.p}`}
+                                nav={ticket.nav}
+                                className={`col-span-1 gap-6 ${ticket.p} group`}
                                 ticketClassName="w-48"
                             >
                                 <div className="w-full flex flex-row items-center justify-end">
