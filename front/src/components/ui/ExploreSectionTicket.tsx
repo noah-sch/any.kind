@@ -1,6 +1,7 @@
 import React from "react";
 
 import PixelTicket from "./PixelTicket";
+import MediaFrame from "./MediaFrame";
 
 type ESTProps = {
     title: string;
@@ -8,13 +9,14 @@ type ESTProps = {
     description: string;
     children?: React.ReactNode;
     className?: string;
+    ticketClassName?: string;
 }
 
-export default function ExploreSectionTicket( {title, imgUrl, description, children, className=''}: ESTProps ) {
+export default function ExploreSectionTicket( {title, imgUrl, description, children, className='', ticketClassName=''}: ESTProps ) {
     
     return(
         <>
-            <div className="flex flex-col items-center justify-start p-24">
+            <div className={`flex flex-col items-center justify-start ${className}`}>
                 <PixelatedArrow height={5}
                     pixelH={'h-[3px]'}
                     pixelW={'w-[3px]'}
@@ -32,18 +34,28 @@ export default function ExploreSectionTicket( {title, imgUrl, description, child
                         [0]
                     ]}
                     pxCol={'bg-white'}
-                    className="bg-white"
+                    className={`bg-white ${ticketClassName}`}
                 >
-                    <div className="flex flex-col items-center justify-start">
+                    <div className="flex flex-col items-center justify-start gap-8">
                         {children}
                         <div className="w-full flex items-center justify-center">
-                            <img src={`../../../medias/${imgUrl}`} alt="" />
+                            <MediaFrame pixelH="h-[2px]"
+                                pixelW="w-[2px]"
+                                cornerDepth={3}
+                                frameCol="bg-dark"
+                                bg='bg-white'
+                                className="h-20 w-20"
+                            >
+                                <img src={`../../../medias/${imgUrl}`} alt="" />
+                            </MediaFrame>
                         </div>
-                        <div className="font-pixelify text-xl">
-                            {title}
-                        </div>
-                        <div className="font-geist text-center">
-                            {description}
+                        <div className="w-full flex flex-col items-center justify-center gap-2">
+                            <div className="font-pixelify text-2xl font-medium text-center leading-none">
+                                {title}
+                            </div>
+                            <div className="font-geist text-lg text-center">
+                                {description}
+                            </div>
                         </div>
                     </div>
                 </PixelTicket>
@@ -66,7 +78,7 @@ function PixelatedArrow ( {height, pixelH, pixelW, borderCol, bgCol}: PAProps ) 
     
     return(
         <>
-            <div className="flex flex-col items-cente justify-center animate-bounce"> {/* animation à changer plus tard probablement */}
+            <div className={`flex flex-col items-center justify-center animate-bounce `}> {/* animation à changer plus tard probablement */}
                 {/* TOP */}
                 <div className="w-full flex flex-row items-center justify-center">
                     {Array.from({length: rowLength * 2 }).map((unknown, index) => (

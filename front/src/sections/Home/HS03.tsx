@@ -14,13 +14,42 @@ export default function HS03() {
                     </h1>
 
                     <div className="w-full grid grid-cols-3 px-24">
-                        {Array.from({length: 3}).map((unknown, index) => (
-                            <ExploreSectionTicket title={'coucou'}
-                                imgUrl={'oui'}
-                                description={'test'}
+                        {[
+                            {
+                                categCount: 2,
+                                categ: 'projects',
+                                title: 'Works',
+                                imgUrl: 'webIcon.png',
+                                description: `All what I've built`,
+                                p: 'pb-24'
+                            },
+                            {
+                                categCount: 4,
+                                categ: 'articles',
+                                title: 'Blog',
+                                imgUrl: 'webIcon.png',
+                                description: `Things I wanted to write`,
+                                p: 'pt-24'
+                            },
+                            {
+                                categCount: 2,
+                                categ: 'features',
+                                title: 'Upcomming projects',
+                                imgUrl: 'webIcon.png',
+                                description: `Things I'm currently working on`,
+                                p: 'pb-24'
+                            }
+                        ].map((ticket, index) => (
+                            <ExploreSectionTicket title={ticket.title}
+                                imgUrl={ticket.imgUrl}
+                                description={ticket.description}
+                                className={`col-span-1 gap-6 ${ticket.p}`}
+                                ticketClassName="w-48"
                             >
                                 <div className="w-full flex flex-row items-center justify-end">
-                                    {index}
+                                    <span className="font-geist font-medium">
+                                        {ticket.categCount} {ticket.categ}
+                                    </span>
                                 </div>
                             </ExploreSectionTicket>
                         ))}
